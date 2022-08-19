@@ -18,7 +18,8 @@
         "skipDefaultLibCheck": true,
         "noUnusedLocals": true,
         "paths": {
-            "useThree/*": ["./packages/hooks/*"]
+            "useThree/*": ["./packages/hooks/*"],
+            "/*": ["./*"]
         },
         "types": []
     },
@@ -27,5 +28,5 @@
         "packages/.vitepress/components/*.vue",
         "packages/.vitepress/*.ts"
     ],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules", "scripts"]
 }

@@ -1,9 +1,16 @@
 import type { Plugin } from 'vite'
 import fs from 'fs'
-import { join } from 'path'
-import { getTypeDefinition } from '../../../scripts'
+import { join, resolve } from 'path'
+import { getTypeDefinition } from '/scripts'
+
+const TYPES_DIR = resolve(__dirname, '../../../types/packages/hooks')
 
 export function MarkdownTransform(): Plugin {
+    const hasTypes = fs.existsSync(TYPES_DIR)
+
+    if (!hasTypes)
+        console.warn('No types dist found, run `npm run build:types` first.')
+
     return {
         name: 'md-transform',
         enforce: 'pre',
@@ -14,8 +21,6 @@ export function MarkdownTransform(): Plugin {
             /* 获取md文档信息 */
             const [pkg, name, i] = id.split('/').slice(-3)
 
-            console.log('md info --->', pkg, name, i);
-
             if (i === 'index.md') {
                 const frontmatterEnds = code.indexOf('---\n\n') + 4
                 const firstSubheader = code.search(/\n## \w/)
@@ -24,11 +29,10 @@ export function MarkdownTransform(): Plugin {
 
                 const { footer, header } = await getFunctionMarkdown(pkg, name)
 
-                // if (hasTypes)
-                //     code = replacer(code, footer, 'FOOTER', 'tail')
+                if (hasTypes)
+                    code = code + '\n\n' + footer + '\n\n'
                 if (header)
                     code = code.slice(0, sliceIndex) + '\n\n' + header + '\n\n' + code.slice(sliceIndex)
-
             }
 
             return code
@@ -48,14 +52,14 @@ async function getFunctionMarkdown(pkg: string, name: string) {
 
     if (types) {
         const code = `\`\`\`typescript\n${types.trim()}\n\`\`\``
-        typingSection = types.length > 1000
+        typingSection = types.length > 2000
             ? [
                 '## Type Declarations',
                 '<summary op50 italic>Show Type Declarations</summary>',
                 '<details>',
                 code,
                 '</details>'
-            ].join('\n') : `\n## Type Declarations\n\n${code}`
+            ].join('\n\n') : `\n## Type Declarations\n\n${code}`
     }
 
     const demoSection = hasDemo

@@ -1,0 +1,33 @@
+{
+  "name": "usethree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run docs:dev",
+    "docs:dev": "vitepress dev packages",
+    "docs:build": "vitepress build packages",
+    "docs:serve": "vitepress serve packages",
+    "test": "ts-node packages/.vitepress/plugins/SideBar.ts"
+  },
+  "keywords": [
+    "threeJs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.7.1",
+    "@types/prettier": "^2.7.0",
+    "@types/three": "^0.143.0",
+    "fast-glob": "^3.2.11",
+    "fs-extra": "^10.1.0",
+    "i": "^0.3.7",
+    "npm": "^8.18.0",
+    "prettier": "^2.7.1",
+    "vitepress": "^1.0.0-alpha.4",
+    "vue": "^3.2.37"
+  },
+  "dependencies": {
+    "three": "^0.143.0"
+  }
+}

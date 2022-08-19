@@ -1,0 +1,1 @@
+export { getTypeDefinition } from './getTypeDefinition'

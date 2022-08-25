@@ -1,7 +1,7 @@
 import type { Plugin } from 'vite'
 import fs from 'fs'
 import { join, resolve } from 'path'
-import { getTypeDefinition } from '/scripts'
+import { getTypeDefinition } from '/scripts/getTypeDefinition'
 
 const TYPES_DIR = resolve(__dirname, '../../../types/packages/hooks')
 

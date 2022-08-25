@@ -1,5 +1,5 @@
 import { Camera, InstancedMesh, Intersection, Object3D, Vector2, Vector3 } from 'three'
-import useRaycaster from 'useThree/core/useRaycaster'
+import { useRaycaster } from 'useThree/core'
 
 export interface PointerEventInterface {
     type: 'pointerenter' | 'pointermove' | 'pointerleave' | 'click'
@@ -66,7 +66,7 @@ export interface PointerInterface {
     intersect(): void
 }
 
-export default function usePointer(options: PointerConfigInterface): PointerInterface {
+export function usePointer(options: PointerConfigInterface): PointerInterface {
     const {
         camera,
         domElement,

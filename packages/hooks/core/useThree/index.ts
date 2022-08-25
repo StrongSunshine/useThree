@@ -2,7 +2,9 @@ import { Camera, Object3D, OrthographicCamera, PerspectiveCamera, Scene, WebGLRe
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 
-import usePointer, {
+import { usePointer } from 'useThree/core'
+
+import type {
     PointerConfigInterface,
     PointerPublicConfigInterface,
     PointerInterface
@@ -82,7 +84,7 @@ export interface ThreeInterface {
 /**
  * Three.js helper
  */
-export default function useThree(params: ThreeConfigInterface): ThreeInterface {
+export function useThree(params: ThreeConfigInterface): ThreeInterface {
     /* 默认参数 */
     let config: ThreeConfigInterface = {
         antialias: true,

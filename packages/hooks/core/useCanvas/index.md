@@ -10,7 +10,7 @@ category: 'core'
 
 ```ts
 import { onMounted } from 'vue'
-import useCanvas from 'useThree/core/useCanvas'
+import { useCanvas } from 'useThree/core'
 
 onMounted(() => {
     const dom = document.querySelector('.div3d')

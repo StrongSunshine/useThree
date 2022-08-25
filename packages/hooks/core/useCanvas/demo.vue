@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import useCanvas from 'useThree/core/useCanvas'
+import { useCanvas } from 'useThree/core'
 
 onMounted(() => {
     const div3d = document.querySelector('.div3d')

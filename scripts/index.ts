@@ -1,1 +1,0 @@
-export { getTypeDefinition } from './getTypeDefinition'

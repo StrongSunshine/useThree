@@ -11,7 +11,7 @@ export interface RaycasterConfigInterface {
     resetPosition?: Vector3
 }
 
-export default function useRaycaster(options: RaycasterConfigInterface): RaycasterInterface {
+export function useRaycaster(options: RaycasterConfigInterface): RaycasterInterface {
     const {
         camera,
         resetPosition = new Vector3(0, 0, 0),

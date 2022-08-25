@@ -1,4 +1,4 @@
-export default function useCanvas(width: number = 400, height: number = 400) {
+export function useCanvas(width: number = 400, height: number = 400) {
     const canvas = document.createElement('canvas')
     canvas.width = width
     canvas.height = height

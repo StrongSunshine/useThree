@@ -4,7 +4,7 @@ import { DefaultTheme } from 'vitepress'
 
 const DIR_HOOKS = resolve(__dirname, '../../hooks')
 
-const listCategoryes = async (dir: string, ignore: string[] = []) => {
+const listCategories = async (dir: string, ignore: string[] = []) => {
     const dirs = await fg('*', {
         onlyDirectories: true,
         cwd: dir,
@@ -19,7 +19,7 @@ const listCategoryes = async (dir: string, ignore: string[] = []) => {
 const generateSideBar = async () => {
     const sidebar: DefaultTheme.Config['sidebar'] = []
 
-    const categoryNames = await listCategoryes(DIR_HOOKS)
+    const categoryNames = await listCategories(DIR_HOOKS)
 
     await Promise.all(categoryNames.map(async name => {
         const files = await fg('*', {

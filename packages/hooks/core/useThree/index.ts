@@ -8,7 +8,7 @@ import type {
     PointerConfigInterface,
     PointerPublicConfigInterface,
     PointerInterface
-} from 'useThree/core/usePointer'
+} from 'useThree/core'
 
 export interface SizeInterface {
     /** @description 宽度 */

@@ -9,7 +9,8 @@ const configs: RollupOptions[] = []
 
 const external = [
     'three',
-    'useThree/core'
+    'useThree/core',
+    'three/examples/jsm/controls/OrbitControls.js'
 ]
 
 const categoriesNmaes = fg.sync('*', {
@@ -18,50 +19,44 @@ const categoriesNmaes = fg.sync('*', {
 })
 
 for (const category of categoriesNmaes) {
-    const fnNames = ['index']
-    fnNames.push(...fg.sync('*/index.ts', { cwd: resolve(`packages/hooks/${category}`) }).map(i => i.split('/')[0]))
+    /* 入口 */
+    const input = `packages/hooks/${category}/index.ts`
+    const outputPath = `dist/${category}`
 
-    for (const fn of fnNames) {
-        /* 入口 */
-        const input = fn === 'index'
-            ? `packages/hooks/${category}/index.ts`
-            : `packages/hooks/${category}/${fn}/index.ts`
+    /* 出口 */
+    const output: OutputOptions[] = []
+    output.push({
+        file: `${outputPath}/index.mjs`,
+        format: 'es',
+    })
+    output.push({
+        file: `${outputPath}/index.cjs`,
+        format: 'cjs',
+    })
 
-        /* 出口 */
-        const output: OutputOptions[] = []
-        output.push({
-            file: `dist/${category}/${fn}.mjs`,
+    /* 配置填充 */
+    configs.push({
+        input,
+        output,
+        plugins: [
+            esbuild(),
+            json(),
+        ],
+        external,
+    })
+
+    /* 输出ts类型 */
+    configs.push({
+        input,
+        output: {
+            file: `${outputPath}/index.d.ts`,
             format: 'es',
-        })
-        output.push({
-            file: `dist/${category}/${fn}.cjs`,
-            format: 'cjs',
-        })
-
-        /* 配置填充 */
-        configs.push({
-            input,
-            output,
-            plugins: [
-                esbuild(),
-                json(),
-            ],
-            external,
-        })
-
-        /* 输出ts */
-        configs.push({
-            input,
-            output: {
-                file: `dist/${category}/${fn}.d.ts`,
-                format: 'es',
-            },
-            plugins: [
-                dts()
-            ],
-            external,
-        })
-    }
+        },
+        plugins: [
+            dts()
+        ],
+        external,
+    })
 }
 
 export default configs

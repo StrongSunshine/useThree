@@ -67,6 +67,8 @@ export interface PointerInterface {
 }
 
 export function usePointer(options: PointerConfigInterface): PointerInterface {
+    const noop = () => { }
+
     const {
         camera,
         domElement,
@@ -74,15 +76,15 @@ export function usePointer(options: PointerConfigInterface): PointerInterface {
         intersectRecursive = false,
         touch = true,
         resetOnEnd = false,
-        onEnter = () => { },
-        onMove = () => { },
-        onLeave = () => { },
-        onClick = () => { },
-        onIntersectEnter = () => { },
-        onIntersectOver = () => { },
-        onIntersectMove = () => { },
-        onIntersectLeave = () => { },
-        onIntersectClick = () => { },
+        onEnter = noop,
+        onMove = noop,
+        onLeave = noop,
+        onClick = noop,
+        onIntersectEnter = noop,
+        onIntersectOver = noop,
+        onIntersectMove = noop,
+        onIntersectLeave = noop,
+        onIntersectClick = noop,
     } = options
 
     const position = new Vector2(0, 0)

@@ -5,7 +5,7 @@ html.dark {
 .demo {
     font-size: var(--vt-doc-code-font-size);
     background: var(--vp-code-block-bg);
-    padding: 2em;
+    padding: 1em;
     position: relative;
     margin-bottom: 10px;
     border-radius: 8px;
@@ -14,4 +14,6 @@ html.dark {
 
 .div3d {
     aspect-ratio: 1/1;
+    border-radius: 8px;
+    overflow: hidden;
 }

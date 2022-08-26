@@ -1,6 +1,8 @@
 import { Camera, Object3D, OrthographicCamera, PerspectiveCamera, Scene, WebGLRenderer, WebGLRendererParameters } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
+
+import type { OrbitControls as OrbitControlsType } from 'three/examples/jsm/controls/OrbitControls.js'
+import type { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 
 import { usePointer } from 'useThree/core'
 
@@ -29,17 +31,17 @@ export interface ThreeConfigInterface {
     /** @description 渲染器绘制输出的画布。 */
     canvas?: HTMLCanvasElement
     /** @description 是否执行抗锯齿。默认值为true */
-    antialias: boolean
+    antialias?: boolean
     /** @description 画布是否包含alpha（透明度）缓冲区。默认值为false */
-    alpha: boolean
+    alpha?: boolean
     /** @description 是否在渲染每一帧之前自动清除其输出。默认值为true */
-    autoClear: boolean
+    autoClear?: boolean
     /** @description 是否开启鼠标控制。默认值为false */
-    orbitCtrl: boolean | Record<string, unknown>
+    orbitCtrl?: boolean | Record<string, unknown>
     /** @description 鼠标操作辅助器。默认值为false */
-    pointer: boolean | PointerPublicConfigInterface
+    pointer?: boolean | PointerPublicConfigInterface
     /** @description 大小自适应。默认值为false， 值为window时设置浏览器窗口大小 */
-    resize: boolean | string
+    resize?: boolean | string
     /** @description 画布宽度。默认值为300 */
     width?: number
     /** @description 画布高度。默认值为150 */
@@ -58,7 +60,7 @@ export interface ThreeInterface {
     /** @description 相机 */
     camera?: Camera
     /** @description 轨道控制器 */
-    cameraCtrl?: OrbitControls
+    cameraCtrl?: OrbitControlsType
     /** @description 场景 */
     scene?: Scene
     /** @description 鼠标辅助器 */
@@ -145,7 +147,7 @@ export function useThree(params: ThreeConfigInterface): ThreeInterface {
             alpha,
             ...config.params
         })
-        renderer.autoClear = autoClear
+        renderer.autoClear = !!autoClear
         return renderer
     }
 

@@ -40,7 +40,7 @@ for (const category of categoriesNmaes) {
         output,
         plugins: [
             esbuild(),
-            json(),
+            json()
         ],
         external,
     })

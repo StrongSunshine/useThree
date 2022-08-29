@@ -1,8 +1,8 @@
 {
   "name": "usethree",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "description": "three",
   "scripts": {
     "start": "npm run build:types && npm run docs:dev",
     "clean": "rimraf dist types",
@@ -31,7 +31,7 @@
     "rollup": "^2.78.1",
     "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-esbuild": "^4.9.3",
-    "vitepress": "^1.0.0-alpha.4",
+    "vitepress": "^1.0.0-alpha.12",
     "vue": "^3.2.37"
   },
   "dependencies": {

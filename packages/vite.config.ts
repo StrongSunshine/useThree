@@ -9,6 +9,12 @@ export default defineConfig({
     resolve: {
         alias: {
             useThree: resolve(__dirname, 'hooks')
-        }
+        },
+        dedupe: [
+            'three'
+        ],
+    },
+    ssr: {
+        noExternal: ['three']
     }
 })

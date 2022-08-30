@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useThree, useCanvas } from 'useThree/core'
+import { useRender, useCanvas } from 'useThree/core'
 import {
     Mesh,
     Scene,
@@ -17,7 +17,7 @@ onMounted(() => {
     const canvas = useCanvas(width, height)
     div3d?.appendChild(canvas)
 
-    const threeHelper = useThree({
+    const threeHelper = useRender({
         alpha: true,
         canvas,
         width,

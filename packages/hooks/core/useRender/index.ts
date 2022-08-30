@@ -86,7 +86,7 @@ export interface ThreeInterface {
 /**
  * Three.js helper
  */
-export function useThree(params: ThreeConfigInterface): ThreeInterface {
+export function useRender(params: ThreeConfigInterface): ThreeInterface {
     /* 默认参数 */
     let config: ThreeConfigInterface = {
         antialias: true,

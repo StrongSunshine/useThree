@@ -2,7 +2,7 @@
 category: 'core'
 ---
 
-# THREE helper
+# THREE Render
 
 创建webglRender
 
@@ -10,14 +10,14 @@ category: 'core'
 
 ```ts
 import { onMounted } from 'vue'
-import useThree from 'useThree/core'
+import { useRender } from 'useThree/core'
 
 onMounted(() => {
     const dom = document.querySelector('.div3d')
 
     const { width, height } = dom!.getBoundingClientRect()
 
-    const helper = useThree({
+    const helper = useRender({
         antialias: true,
         alpha: true,
         autoClear: true,

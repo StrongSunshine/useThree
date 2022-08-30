@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /hooks/core/useThree/
+      link: /hooks/core/useRender/
     # - theme: alt
     #   text: hooks
     #   link: /hooks

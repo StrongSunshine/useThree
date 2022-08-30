@@ -22,3 +22,15 @@ onMounted(() => {
     dom.appendChild(canvas)
 })
 ```
+
+### `width`
+
+宽
+
+- 类型：number
+
+### `height`
+
+高
+
+- 类型：number

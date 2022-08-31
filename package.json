@@ -6,6 +6,7 @@
   "scripts": {
     "start": "npm run build:types && npm run docs:dev",
     "clean": "rimraf dist types",
+    "build": "npm run docs:build && npm run build:rollup",
     "docs:dev": "vitepress dev packages",
     "docs:build": "vitepress build packages",
     "docs:serve": "vitepress serve packages",

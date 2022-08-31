@@ -1,4 +1,4 @@
-import { type Vector3, OrthographicCamera } from "three"
+import { OrthographicCamera } from "three"
 
 /** @description 正交相机  */
 interface OrthographicCameraConfigInterface {
@@ -8,7 +8,7 @@ interface OrthographicCameraConfigInterface {
     bottom?: number
     near?: number
     far?: number
-    position?: Vector3
+    position?: [number, number, number]
 }
 
 export function useOrthographicCamera(config: OrthographicCameraConfigInterface) {
@@ -33,7 +33,7 @@ export function useOrthographicCamera(config: OrthographicCameraConfigInterface)
     const camera = new OrthographicCamera(left, right, top, bottom, near, far)
 
     if (position) {
-        camera.position.set(position.x, position.y, position.z)
+        camera.position.set(...position)
     }
 
     return camera

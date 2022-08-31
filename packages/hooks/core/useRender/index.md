@@ -8,6 +8,10 @@ category: 'core'
 
 ## Usage
 
+::: tip
+如果你需要一个透明的渲染器，你应该在渲染器上使用 alpha。
+:::
+
 ```ts
 import { onMounted } from 'vue'
 import { useRender } from 'useThree/core'

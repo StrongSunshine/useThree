@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useRender, useCanvas } from 'useThree/core'
 import {
-    Mesh,
-    Scene,
-    PerspectiveCamera,
-    MeshPhongMaterial,
-    DirectionalLight,
-    TorusGeometry
-} from 'three'
+    useRender,
+    useCanvas,
+    useScene,
+    usePerspectiveCamera
+} from 'useThree/core'
+import { Mesh, MeshPhongMaterial, DirectionalLight, TorusGeometry } from 'three'
 
 onMounted(() => {
     const div3d = document.querySelector('.div3d')
@@ -17,20 +15,24 @@ onMounted(() => {
     const canvas = useCanvas(width, height)
     div3d?.appendChild(canvas)
 
-    const threeHelper = useRender({
+    const renderer = useRender({
         alpha: true,
         canvas,
         width,
         height
     })
 
-    const scene = new Scene()
-    const camera = new PerspectiveCamera(75, width / height, 0.1, 1000)
-    camera.position.set(10, 10, 10)
-    camera.lookAt(0, 0, 0)
+    const [scene] = useScene()
+
+    const camera = usePerspectiveCamera({
+        fov: 75,
+        aspect: width / height,
+        position: [0, 7.5, 15],
+        lookAt: [0, 0, 0]
+    })
 
     const dirLight = new DirectionalLight(0xffffff, 1)
-    dirLight.position.set(-3, 3, 3).normalize()
+    dirLight.position.set(-30, 30, 30).normalize()
     scene.add(dirLight)
 
     const material = new MeshPhongMaterial({ color: 0x00ff99 })
@@ -39,11 +41,11 @@ onMounted(() => {
     mesh.position.set(0, 0, 0)
     scene.add(mesh)
 
-    threeHelper.scene = scene
-    threeHelper.camera = camera
+    renderer.scene = scene
+    renderer.camera = camera
 
-    threeHelper.init()
-    threeHelper.render()
+    renderer.init()
+    renderer.render()
 })
 </script>
 

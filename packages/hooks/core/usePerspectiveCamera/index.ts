@@ -1,4 +1,4 @@
-import { type Vector3, PerspectiveCamera } from "three"
+import { PerspectiveCamera } from "three"
 
 /** @description 透视相机  */
 interface PerspectiveCameraConfigInterface {
@@ -6,8 +6,8 @@ interface PerspectiveCameraConfigInterface {
     aspect?: number
     near?: number
     far?: number
-    position?: Vector3
-    lookAt?: Vector3
+    position?: [number, number, number]
+    lookAt?: [number, number, number]
 }
 
 export function usePerspectiveCamera(config: PerspectiveCameraConfigInterface) {
@@ -29,11 +29,11 @@ export function usePerspectiveCamera(config: PerspectiveCameraConfigInterface) {
     const camera = new PerspectiveCamera(fov, aspect, near, far)
 
     if (position) {
-        camera.position.set(position.x, position.y, position.z)
+        camera.position.set(...position)
     }
 
     if (lookAt) {
-        camera.lookAt(lookAt.x, lookAt.y, lookAt.z)
+        camera.lookAt(...lookAt)
     }
 
 

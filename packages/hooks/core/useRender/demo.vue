@@ -3,10 +3,9 @@ import { onMounted } from 'vue'
 import {
     useRender,
     useCanvas,
-    useScene,
     usePerspectiveCamera
 } from 'useThree/core'
-import { Mesh, MeshPhongMaterial, DirectionalLight, TorusGeometry } from 'three'
+import { Scene, Mesh, MeshPhongMaterial, DirectionalLight, TorusGeometry } from 'three'
 
 onMounted(() => {
     const div3d = document.querySelector('.div3d')
@@ -22,8 +21,7 @@ onMounted(() => {
         height
     })
 
-    const [scene] = useScene()
-
+    const scene = new Scene()
     const camera = usePerspectiveCamera({
         fov: 75,
         aspect: width / height,

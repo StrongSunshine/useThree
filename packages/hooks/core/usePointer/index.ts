@@ -19,13 +19,13 @@ export type PointerCallbackType = (e: PointerEventInterface) => void
 export type PointerIntersectCallbackType = (e: PointerIntersectEventInterface) => void
 
 export interface PointerPublicConfigInterface {
-    /**@description 射线检测模式-该参数似乎没有用 */
+    /**@description 射线检测模式 */
     intersectMode?: 'frame'
     /**@description 是否递归设置所有子物体 */
     intersectRecursive?: boolean
     /**@description 是否移动设备 */
     touch?: boolean
-    /**@description 移出事件是否重置位置 */
+    /**@description 移除事件是否重置位置 */
     resetOnEnd?: boolean
     onEnter?: PointerCallbackType
     onMove?: PointerCallbackType

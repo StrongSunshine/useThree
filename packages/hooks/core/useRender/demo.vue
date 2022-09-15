@@ -5,7 +5,7 @@ import {
     useCanvas,
     usePerspectiveCamera
 } from 'useThree/core'
-import { Scene, Mesh, MeshPhongMaterial, DirectionalLight, TorusGeometry } from 'three'
+import { Scene, Mesh, MeshPhongMaterial, DirectionalLight, TorusGeometry, Vector3 } from 'three'
 
 onMounted(() => {
     const div3d = document.querySelector('.div3d')

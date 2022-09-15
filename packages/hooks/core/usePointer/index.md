@@ -6,6 +6,10 @@ category: 'core'
 
 事件监听交互对应的3Dobeject
 
+::: tip
+点击进行更新信息
+:::
+
 ## Usage
 
 ```ts
